@@ -1,28 +1,31 @@
 import type { Product } from "../../products/models/product";
 
 interface CartItem {
-    qntProducts: 0,
-    products: Product
+    qntProduct: number,
+    product: Product
 }
 
 export class Cart {
     constructor(
         public items: CartItem[],
-        public totalValue: number
     ) {}
 
     getFinalPrice() {
-        for(const item of this.items) {
-            const productPrice = item.products.price * item.qntProducts;
-            this.totalValue += productPrice;
-            return this.totalValue;
-        }
+        const cartFinalPrice = this.items.reduce((acc, cur) => acc + (cur.product.price * cur.qntProduct ), 0);
+        return cartFinalPrice;
     }
 
     getTotalItems() {
         return this.items.length;
     }
 
-    
-
+    addProduct(product:Product, qntProduct:number) {
+        const isDuplicatedItem = this.items.some((cartItem) => product === cartItem.product );
+        if (!isDuplicatedItem) {
+            this.items.push({ qntProduct, product }) 
+            return 'Item adicionado ao carrinho'
+        } else {
+            return 'Você já passui esse produto no carrinho'; 
+        }        
+    }
 }
