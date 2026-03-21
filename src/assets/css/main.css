@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    --font-family-ls: 'Poppins', sans-serif;
+    --font-orbitron: 'Orbitron', 'Poppins', 'sans-serif;';
+    --color-red-ls: #CD0016;
+    --color-white-ls: #EEEEEE;
+    --color-black-ls: #0A0A0A;
+    --color-white-card-ls: #F8F8F8;
+
+    --text-title-ls: 5vw;
+    --text-subtitle-ls: 1.5vw;
+    --text-small-ls: 0.7vw;
+    --text-button-ls: 1vw;
+}
+
+.tag-card {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.tag-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-texture {
+    background-image: url('/images/textura-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: multiply;
+    opacity: .5;
+}
