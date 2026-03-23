@@ -1,17 +1,17 @@
 <script setup lang="ts">
-    interface ProductCardProps {
-        productName: string,
-        productPrice: number,
-        imgSrc?:string,
-    }
+interface ProductCardProps {
+    productName: string,
+    productPrice: number,
+    imgSrc?:string,
+}
 
-    const productCardProps = defineProps<ProductCardProps>()
+const productCardProps = defineProps<ProductCardProps>()
 </script>
 
 <template>
     <div class="relative tag-card overflow-hidden aspect-3/4 h-[30vh] bg-black-ls/20 backdrop-blur-sm">
         <img 
-            src="/images/shirt-model.png" 
+            src="/assets/images/shirt-model.png" 
             alt=""
             class="object-cover object-center"
         >

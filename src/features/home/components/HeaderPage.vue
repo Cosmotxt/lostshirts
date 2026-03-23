@@ -8,21 +8,21 @@
             <div class="flex justify-between items-center mx-auto w-[80%]">
                 <nav>
                     <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
-                        <li><a href="">CATEGORIAS</a></li>
-                        <li><a href="">PROMOÇÕES</a></li>
-                        <li><a href="">COMPRE PELO WHATSAPP</a></li>
+                        <li><router-link to="">CATEGORIAS</router-link></li>
+                        <li><router-link to="">PROMOÇÕES</router-link></li>
+                        <li><router-link to="">COMPRE PELO WHATSAPP</router-link></li>
                     </ul>
                 </nav>
     
-                <a href="/">
-                    <img src="/images/logo.png" alt="logotipo do site" class="w-[8vw]">
-                </a>
+                <router-link to="/">
+                    <img src="/assets/images/logo.png" alt="logotipo do site" class="w-[8vw]">
+                </router-link>
                     
     
                 <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
-                    <li><a href="">BUSCAR PRODUTO</a></li>
-                    <li><a href="/carrinho">CARRINHO</a></li>
-                    <li><a href="">ENTRAR / CADASTRAR</a></li>
+                    <li><router-link to="">BUSCAR PRODUTO</router-link></li>
+                    <li><router-link to="/carrinho">CARRINHO</router-link></li>
+                    <li><router-link to="">ENTRAR / CADASTRAR</router-link></li>
                 </ul>
             </div>
         </div>

@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useCartStore } from '../../../core/stories/CartStore'
+import { storeToRefs } from 'pinia';
+import type { Product } from '../../products/models/product';
 
-    interface ProductResumeProps {
-        productImg: string    
-        productTitle: string,
-        productSize: string,
-        productColor: string,
-        productPrice: number,
-    }
-    
-    const productResumeProps = defineProps<ProductResumeProps>();
+interface ProductResumeProps {
+    productImg: string    
+    productTitle: string,
+    productSize: string,
+    productColor: string,
+    productPrice: number,
+    product: Product
+}
 
-    const itemQnt = ref(1);
+const productResumeProps = defineProps<ProductResumeProps>()
 
-    const addItem = () => {
-        if (itemQnt.value <= 100) itemQnt.value++;
-    }
-    const removeItem = () => {
-        if (itemQnt.value > 1) itemQnt.value--;
-    }
+const cartStore = useCartStore()
+const { items } = storeToRefs(cartStore)
 
 </script>
 
@@ -39,12 +37,12 @@ import { ref } from 'vue'
                     <span>Tamanho</span>
                     <div class="uppercase font-bold">{{ productResumeProps.productSize }}</div>
                 </div>
-                <div class="flex gap-10">
+                <div class="flex items-center gap-10">
                     <span>Cor:</span>
                     <div 
                         class="aspect-square rounded-full h-[2vh]"
                         :style='{
-                            backgroundColor: `url(${productResumeProps.productColor})`
+                            backgroundColor: `${productResumeProps.productColor}`
                         }'
                     ></div>
                 </div>
@@ -55,12 +53,12 @@ import { ref } from 'vue'
             </span>
             
             <div class="flex gap-[1vw] items-center">
-                <div @click="removeItem" class="w-[2vw] h-[2vw] aspect-square rounded-full flex items-center justify-center border-[.1vh] border-black-ls/40 cursor-pointer">-</div>
-                <span class="text-center">{{ itemQnt }}</span>
-                <div @click="addItem" class=" rounded-full w-[2vw] h-[2vw] aspect-square flex items-center justify-center border-[.1vh] border-black-ls/40 cursor-pointer">+</div>
+                <div @click="cartStore.removeItems(product)" class="w-[2vw] h-[2vw] aspect-square rounded-full flex items-center justify-center border-[.1vh] border-black-ls/40 cursor-pointer">-</div>
+                <span class="text-center">{{ cartStore.productQuantity(product.id) }}</span>
+                <div @click="cartStore.addItems(product)" class="rounded-full w-[2vw] h-[2vw] aspect-square flex items-center justify-center border-[.1vh] border-black-ls/40 cursor-pointer">+</div>
             </div>
             
-            <span>R&#36; {{ (productResumeProps.productPrice * itemQnt).toFixed(2).replace('.', ',') }}</span>
+            <span>R&#36; {{ (productResumeProps.productPrice * cartStore.productQuantity(product.id)).toFixed(2).replace('.', ',') }}</span>
         </div>
     </div>
 </template>

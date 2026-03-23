@@ -1,12 +1,12 @@
 <script setup lang="ts">
-    import ButtonGlass from './ui/ButtonGlass.vue';
+import ButtonGlass from './ButtonGlass.vue';
 
-    interface TagCardProps {
-        imgSrc: string,
-        btnName: string
-    }
+interface TagCardProps {
+    imgSrc: string,
+    btnName: string
+}
 
-    const tagCardProps = defineProps<TagCardProps>();
+const tagCardProps = defineProps<TagCardProps>();
 </script>
 
 <template>

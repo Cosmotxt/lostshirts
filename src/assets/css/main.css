@@ -2,8 +2,8 @@
 @import "@nuxt/ui";
 
 @theme {
-    --font-family-ls: 'Poppins', sans-serif;
-    --font-orbitron: 'Orbitron', 'Poppins', 'sans-serif;';
+    --font-quantico: 'Quantico', sans-serif;
+    --font-tomorrow: 'Tomorrow', 'Quantico', 'sans-serif;';
     --color-red-ls: #CD0016;
     --color-white-ls: #EEEEEE;
     --color-black-ls: #0A0A0A;
@@ -33,7 +33,7 @@
 }
 
 .bg-texture {
-    background-image: url('/images/textura-bg.png');
+    background-image: url('/images/assets/textura-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

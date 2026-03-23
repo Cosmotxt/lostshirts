@@ -1,7 +1,15 @@
 <script setup lang="ts">
-    import HeaderPage from '../../home/components/HeaderPage.vue';
-    import CartResume from '../components/CartResume.vue';
-    import ProductResume from '../components/ProductResume.vue';
+import { storeToRefs } from 'pinia';
+import { useCartStore } from '../../../core/stories/CartStore';
+import HeaderPage from '../../home/components/HeaderPage.vue';
+import CartResume from '../components/CartResume.vue';
+import ProductResume from '../components/ProductResume.vue';
+
+const cartStore = useCartStore()
+const { items } = storeToRefs(cartStore)
+
+
+
 </script>
 
 <template>
@@ -10,16 +18,17 @@
         <div class="absolute inset-[2vh] flex items-start justify-center bg-white-ls overflow-y-scroll py-[10vh] box-border">
             <div class="flex justify-center items-center w-[85%] bg-white-card-ls">
                 <div class="flex flex-col justify-start h-[90%] w-[90%] py-[3vh]">
-                    <h1 class="text-title-ls text-black-ls font-bold font-orbitron uppercase">Carrinho</h1>
+                    <h1 class="text-title-ls text-black-ls font-bold font-tomorrow uppercase">Carrinho</h1>
                     <div class="flex">
                         <ul class="flex flex-col w-[85%] h-[70%] gap-[6vh]">
-                            <li>
+                            <li v-for="product in items">
                                 <ProductResume 
-                                    product-img="/images/shirt-model-2.jpg" 
-                                    product-title="Camisinha estourada"
+                                    product-img="/images/assets/shirt-model-2.jpg" 
+                                    :product-title="product.name"
                                     product-size="G"
-                                    :product-price=25
+                                    :product-price=product.price
                                     product-color="#AAAAAA"
+                                    :product=product
                                 />
                             </li>
                         </ul>

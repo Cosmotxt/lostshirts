@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import CartView from "../../features/cart/views/CartView.vue";
-import HomePage from "../../features/home/views/homePage.vue";
+import HomePage from "../../features/home/views/HomeView.vue";
 
 const router = createRouter({
     history: createWebHistory(),
