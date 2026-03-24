@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useCartStore } from '../../../core/stories/CartStore'
-import { storeToRefs } from 'pinia';
 import type { Product } from '../../products/models/product';
 
 interface ProductResumeProps {
@@ -16,7 +14,6 @@ interface ProductResumeProps {
 const productResumeProps = defineProps<ProductResumeProps>()
 
 const cartStore = useCartStore()
-const { items } = storeToRefs(cartStore)
 
 </script>
 
