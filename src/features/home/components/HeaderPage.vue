@@ -21,6 +21,7 @@
     
                 <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
                     <li><router-link to="">BUSCAR PRODUTO</router-link></li>
+                    <li><router-link to="/favoritos">FAVORITOS</router-link></li>
                     <li><router-link to="/carrinho">CARRINHO</router-link></li>
                     <li><router-link to="/login">ENTRAR / CADASTRAR</router-link></li>
                 </ul>

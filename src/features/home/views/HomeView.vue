@@ -6,6 +6,6 @@
 
 <template>
     <HeroSection />
-    <OurProductsSection />
+    <!-- <OurProductsSection /> -->
     <CatalogSection title="Hits da semana" />
 </template>

@@ -1,8 +1,32 @@
 <script setup lang="ts">
+interface ButtonBlackProps {
+    text: string,
+    addClass?: string,
+    secondary?: boolean,
+}
+
+const buttonBlackProps = defineProps<ButtonBlackProps>()
+
 </script>
 
 <template>
-    <button class="bg-black-ls text-white-ls font-orbitron text-button-ls font-medium uppercase py-[2vh] font-tomorrow">
-        FINALIZAR COMPRA
+    <button 
+        :class="[
+            addClass, 
+            'bg-transparente border border-black-ls text-black-ls font-medium uppercase py-[2vh] px-[4vw] cursor-pointer'
+        ]"
+        v-if="buttonBlackProps.secondary"
+    >
+        {{ buttonBlackProps.text }}
+    </button>
+
+    <button 
+        :class="[
+            addClass,
+            'bg-black-ls text-white-ls font-medium uppercase py-[2vh] px-[4vw] cursor-pointer hover:bg-red-ls hover:scale-101 duration-500'
+        ]"
+        v-else
+    >
+        {{ buttonBlackProps.text }}
     </button>
 </template>

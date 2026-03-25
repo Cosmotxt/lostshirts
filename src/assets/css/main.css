@@ -3,7 +3,9 @@
 
 @theme {
     --font-quantico: 'Quantico', sans-serif;
-    --font-tomorrow: 'Tomorrow', 'Quantico', 'sans-serif;';
+    --font-tomorrow: 'Tomorrow', 'Quantico', sans-serif;;
+    --font-stalinist: 'Stalinist One', sans-serif;
+    --font-dotgothic: 'DotGothic16', sans-serif;
     --color-red-ls: #CD0016;
     --color-white-ls: #EEEEEE;
     --color-black-ls: #0A0A0A;
@@ -13,6 +15,8 @@
     --text-subtitle-ls: 1.5vw;
     --text-small-ls: 0.7vw;
     --text-button-ls: 1vw;
+    --text-giant-ls: 8vw;
+    --text-super-giant-ls: 16vw;
 }
 
 .tag-card {
@@ -29,7 +33,7 @@
     background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 0;
 }
 
 .bg-texture {
