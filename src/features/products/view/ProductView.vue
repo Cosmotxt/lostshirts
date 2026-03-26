@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
-import type { Product } from '../models/product'
 import { useCartStore } from '../../../core/stories/CartStore'
+import products from '../service/productsResponse'
 
 const route = useRoute()
 const router = useRouter()
@@ -13,51 +13,13 @@ const colorMap: Record<string, string> = {
   'Preta': '#1a1a1a',
   'Branca': '#f5f5f5',
   'Cinza': '#888888',
-  'Dourado': '#c9a84c',
-  'Prateado': '#aaaaaa',
+  'Amarelo': '#f5c518',
+
+  
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Camiseta Pikachu',
-    price: 25.00,
-    description: 'Camiseta de algodão com estampa do Pikachu. Confortável para o dia a dia.',
-    category: { id: 1, name: 'Estampadas' },
-    type: 'clothing',
-    sizes: ['P', 'M', 'G', 'GG'],
-    colors: ['Preta', 'Branca']
-  },
-  {
-    id: 2,
-    name: 'Moletom Lost',
-    price: 199.90,
-    description: 'Moletom quentinho com capuz, perfeito para o inverno.',
-    category: { id: 2, name: 'Moletons' },
-    type: 'clothing',
-    sizes: ['P', 'M', 'G', 'GG'],
-    colors: ['Cinza', 'Preta']
-  },
-  {
-    id: 3,
-    name: 'Caneca Lost',
-    price: 49.90,
-    description: 'Caneca de porcelana 300ml com logo exclusivo da Lost Shirts.',
-    category: { id: 3, name: 'Acessórios' },
-    type: 'mug',
-    colors: ['Preta', 'Branca']
-  },
-  {
-    id: 4,
-    name: 'Botons Lost',
-    price: 15.90,
-    description: 'Kit de botons metálicos com designs exclusivos.',
-    category: { id: 3, name: 'Acessórios' },
-    type: 'button',
-    colors: ['Dourado', 'Prateado']
-  },
-]
 
+ 
 const product = products.find(p => p.id === Number(route.params.id))
 
 const selectedSize = ref<string | null>(null)
@@ -95,9 +57,8 @@ function buyNow() {
 
     <div class="flex flex-col md:flex-row gap-12 px-8 py-10 max-w-5xl mx-auto">
 
-      <!-- Imagem -->
       <div class="w-full md:w-1/2 aspect-3/4 bg-black-ls/10 overflow-hidden">
-        <img src="/assets/images/shirt-model.png" alt="Foto do produto" class="w-full h-full object-cover object-center" />
+        <img :src="product.urlImage" alt="Foto do produto" class="w-full h-full object-cover object-center" />
       </div>
 
       <!-- Informações -->
@@ -134,7 +95,7 @@ function buyNow() {
         </div>
 
         <!-- TAMANHOS — só para roupas -->
-        <div v-if="product.type === 'clothing' && product.sizes">
+        <div v-if="product.sizes && product.sizes.length">
           <p class="text-sm uppercase tracking-widest mb-2">Tamanho:</p>
           <div class="flex gap-2">
             <button
