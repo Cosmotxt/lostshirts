@@ -11,7 +11,7 @@ const cartStore = useCartStore()
 // Mapa de nomes de cores para valores CSS
 const colorMap: Record<string, string> = {
   'Preta': '#1a1a1a',
-  'Branca': '#f5f5f5',
+  'Branco': '#f5f5f5',
   'Cinza': '#888888',
   'Amarelo': '#f5c518',
 
