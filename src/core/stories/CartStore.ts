@@ -4,6 +4,8 @@ import { computed, ref } from "vue";
 
 export interface CartItem extends Product {
     quantity: number;
+    selectedSize?: string
+    selectedColor?: string
 }
 
 export const useCartStore = defineStore('cart', () => {
@@ -31,31 +33,42 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
 
-    function addItems(product: Product) {
-        const existingItem = items.value.find(item => item.id === product.id);
+    function addItems(product: Product, selectedSize?: string, selectedColor?: string, quantity: number =1) {
+        const size = selectedSize ?? null
+        const color = selectedColor ?? null
+        const existingItem = items.value.find(item => item.id === product.id && (item.selectedSize ?? null) === size 
+        && (item.selectedColor ?? null) === color);
         
         if (existingItem) {
-            existingItem.quantity < 999 ? existingItem.quantity++ : existingItem.quantity;
+            existingItem.quantity = Math.min (existingItem.quantity+ quantity, 999)
         } else {
-            items.value.push({ ...product, quantity: 1 });
+            items.value.push({ ...product, quantity, selectedSize, selectedColor });
         }
     }
 
-    function removeItems(product: Product) {
-        const existingItem = items.value.find(item => item.id === product.id);
-        console.log(existingItem?.quantity)
-        
+    function removeItems(product: CartItem) {
+        const existingItem = items.value.find(item => item.id === product.id
+            && (item.selectedSize ?? null) ===(product.selectedSize ?? null)
+            && (item.selectedColor ?? null) === (product.selectedColor ?? null)
+            
+        )  
         if (existingItem) {
-            existingItem.quantity > 1 ? existingItem.quantity-- : removeProduct(product.id);
+            existingItem.quantity > 1 ? existingItem.quantity-- : removeProduct(product.id, product.selectedSize, product.selectedColor);
         } else {
             console.log('erro: item inexistente');
         }
 
     }
 
-    function removeProduct(id: number) {
+    function removeProduct(id: number, selectedSize?: string, selectedColor?: string) {
+        items.value = items.value.filter(
+            item => !(
+                item.id === id
+                &&(item.selectedSize ?? null) === (selectedSize ?? null)
+                &&(item.selectedColor ?? null)=== (selectedColor ?? null)
+            )
+        )
         console.log('removido')
-        items.value = items.value.filter(item => item.id !== id);
     }
 
     return { items, totalItems, totalPrice, addItemsById, productQuantity, addItems, removeProduct, removeItems };

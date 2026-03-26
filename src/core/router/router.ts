@@ -5,6 +5,7 @@ import HomePage from "../../features/home/views/HomeView.vue";
 import LoginView from "../../features/auth/views/LoginView.vue";
 import RegisterView from "../../features/auth/views/RegisterView.vue";
 import FavoritesView from "../../features/favorites/views/FavoritesView.vue";
+import ProductView from "../../features/products/view/ProductView.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,6 +29,11 @@ const router = createRouter({
         {
             path: '/cadastrar',
             component: RegisterView
+        },
+        {   
+
+            path: '/produto/:id',
+            component: ProductView
         }
     ]
 });

@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { useCartStore } from '../../../core/stories/CartStore';
-import HeaderPage from '../../home/components/HeaderPage.vue';
-import CartResume from '../components/CartResume.vue';
-import ProductResume from '../components/ProductResume.vue';
+import { storeToRefs } from 'pinia'
+import { useCartStore } from '../../../core/stories/CartStore'
+import HeaderPage from '../../home/components/HeaderPage.vue'
+import CartResume from '../components/CartResume.vue'
+import ProductResume from '../components/ProductResume.vue'
 
 const cartStore = useCartStore()
-const { items } = storeToRefs(cartStore)
-
-
-
+const { items, totalPrice } = storeToRefs(cartStore)
 </script>
 
 <template>
@@ -19,21 +16,35 @@ const { items } = storeToRefs(cartStore)
             <div class="flex justify-center items-center w-[85%] bg-white-card-ls">
                 <div class="flex flex-col justify-start h-[90%] w-[90%] py-[3vh]">
                     <h1 class="text-title-ls text-black-ls font-bold font-tomorrow uppercase">Carrinho</h1>
-                    <div class="flex">
+
+                    <!-- Carrinho vazio -->
+                    <div v-if="items.length === 0" class="flex flex-col items-center gap-4 py-20">
+                        <p class="opacity-60">Seu carrinho está vazio.</p>
+                        <router-link
+                            to="/"
+                            class="border border-black-ls px-6 py-2 text-sm uppercase tracking-widest hover:bg-black-ls hover:text-white-ls transition-colors"
+                        >
+                            Continuar comprando
+                        </router-link>
+                    </div>
+
+                    <!-- Lista de itens -->
+                    <div v-else class="flex">
                         <ul class="flex flex-col w-[85%] h-[70%] gap-[6vh]">
-                            <li v-for="product in items">
-                                <ProductResume 
-                                    product-img="/images/assets/shirt-model-2.jpg" 
-                                    :product-title="product.name"
-                                    product-size="G"
-                                    :product-price=product.price
-                                    product-color="#AAAAAA"
-                                    :product=product
+                            <li
+                                v-for="product in items"
+                                :key="`${product.id}-${product.selectedSize}-${product.selectedColor}`"
+                            >
+                                <ProductResume
+                                    product-img="/assets/images/shirt-model.png"
+                                    :product-price="product.price"
+                                    :product="product"
                                 />
                             </li>
                         </ul>
-                        <CartResume :product-total-price=240.00 />
+                        <CartResume :product-total-price="totalPrice" /> <!-- ← total dinâmico -->
                     </div>
+
                 </div>
             </div>
         </div>

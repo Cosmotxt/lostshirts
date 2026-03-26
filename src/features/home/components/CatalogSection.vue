@@ -1,37 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import ProductCard from '../../products/components/ProductCard.vue';
-import type { Product } from '../../products/models/product';
 import products from '../../products/service/productsResponse';
-import { useCartStore } from '../../../core/stories/CartStore';
+import { useRouter } from 'vue-router';
 
-const productRef = ref<Product[]>([])
+defineProps<{ title: string }>()  // ← prop do título de volta
 
+const router = useRouter()
 
-interface CatalogSectionProps {
-    title: string,
-}   
-
-const catalogSectionProps = defineProps<CatalogSectionProps>()
-
-const cartStore = useCartStore()
-
-function addItemToCart(product: Product) {
-    cartStore.addItems(product)
+function goToProduct(id: number) {
+    router.push(`/produto/${id}`)
 }
-    
 </script>
 
 <template>
     <div class="h-screen bg-white-ls flex flex-col gap-[10vh] justify-center items-center">
-        <h1 class="text-title-ls font-tomorrow font-bold text-black-ls uppercase">{{ catalogSectionProps.title }}</h1>
+        <h1 class="text-title-ls font-tomorrow font-bold text-black-ls uppercase">{{ title }}</h1>
         <div class="flex justify-around w-[95%]">
-            <div v-for="product in products" :key="product.id">
-                <ProductCard 
-                    :product="product"
-                />
+            <div v-for="product in products" :key="product.id" @click="goToProduct(product.id)">
+                <ProductCard :product="product" />
             </div>
         </div>
     </div>
-
 </template>

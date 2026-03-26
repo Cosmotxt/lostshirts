@@ -8,10 +8,10 @@ import TagCard from './ui/TagCard.vue';
             <h1 class="font-tomorrow font-bold text-title-ls text-black-ls">NOSSOS PRODUTOS</h1>
             
             <div class="flex justify-around w-[90%]">
-                <TagCard img-src="/assets/images/shirt-model.png" btn-name="CAMISETA" />
-                <TagCard img-src="/assets/images/shirt-model.png" btn-name="MOLETOM" />
-                <TagCard img-src="/assets/images/shirt-model.png" btn-name="CANECA" />
-                <TagCard img-src="/assets/images/shirt-model.png" btn-name="BOTONS" />
+                <TagCard img-src="/assets/images/shirt-model.png" btn-name="CAMISETA" :product-id="1"/>
+                <TagCard img-src="/assets/images/shirt-model.png" btn-name="MOLETOM" :product-id="2" />
+                <TagCard img-src="/assets/images/shirt-model.png" btn-name="CANECA" :product-id="3"/>
+                <TagCard img-src="/assets/images/shirt-model.png" btn-name="BOTONS" :product-id="4" />
             </div>
             
         </div>
