@@ -1,53 +1,57 @@
 <script setup lang="ts">
-import { useCartStore } from '../../../core/stories/CartStore'
-import { storeToRefs } from 'pinia'
 
-const cartStore = useCartStore()
-const { totalItems } = storeToRefs(cartStore)
 </script>
 
 <template>
-    <div class="absolute top-0 left-0 z-99 w-screen">
+    <div class="fixed top-0 left-0 z-99 w-screen">
         <div class="mx-auto bg-black-ls w-[85%] py-3 [clip-path:url(#header-clip)]">
             <div class="flex justify-between items-center mx-auto w-[80%]">
                 <nav>
                     <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
-                        <li>
+                        <li class="flex items-center gap-[.5vw] cursor-pointer">
                             <router-link to="">CATEGORIAS</router-link>
-                            <span class="pi pi-arrow-down"></span>
+                            <span class="pi pi-chevron-down"></span>
                         </li>
-                        <li>
+                        <li class="flex items-center gap-[.5vw] cursor-pointer">
                             <router-link to="">PROMOÇÕES</router-link>
-                            <span class="pi pi-arrow-down"></span>
+                            <span class="pi pi-chevron-down"></span>
                         </li>
-                        <li>
+                        <li class="flex items-center gap-[.5vw] cursor-pointer">
                             <router-link to="">COMPRE PELO WHATSAPP</router-link>
-                            <span class="pi pi-arrow-down"></span>
+                            <span class="pi pi-chevron-down"></span>
                         </li>
                     </ul>
                 </nav>
 
                 <router-link to="/">
-                    <img src="/assets/images/logo.png" alt="logotipo do site" class="w-[8vw]">
+                    <img src="/assets/images/logo.svg" alt="logotipo do site" class="w-[8vw]">
                 </router-link>
                     
     
                 <ul class="flex items-end gap-14 text-white-ls text-small-ls font-family-ls">
-                    <li class="flex flex-col items-center gap-[.5vh]">
-                        <i class="pi pi-search text-button-ls"></i>
-                        <router-link to="">BUSCAR PRODUTO</router-link>
+                    <li>
+                        <router-link to="" class="flex flex-col items-center gap-[.5vh]">
+                            <i class="pi pi-search text-button-ls"></i>
+                            <span>PRODUTO</span>
+                        </router-link>
+                    </li>
+                    <li class="">
+                        <router-link to="/favoritos" class="flex flex-col items-center gap-[.5vh]">
+                            <i class="pi pi-heart text-button-ls"></i>
+                            <span>FAVORITOS</span>
+                        </router-link>
                     </li>
                     <li class="flex flex-col items-center gap-[.5vh]">
-                        <i class="pi pi-heart text-button-ls"></i>
-                        <router-link to="/favoritos">FAVORITOS</router-link>
-                    </li>
-                    <li class="flex flex-col items-center gap-[.5vh]">
+                        <router-link to="/carrinho" class="flex flex-col items-center gap-[.5vh]">    
                         <i class="pi pi-shopping-cart text-button-ls"></i>
-                        <router-link to="/carrinho">CARRINHO</router-link>
+                        <span>CARRINHO</span>
+                        </router-link>
                     </li>
                     <li class="flex flex-col items-center gap-[.5vh]">
+                        <router-link to="/carrinho" class="flex flex-col items-center gap-[.5vh]">
                         <i class="pi pi-user text-button-ls"></i>
-                        <router-link to="/login">ENTRAR / CADASTRAR</router-link>
+                        <span>ENTRAR / CADASTRAR</span> 
+                        </router-link>
                     </li>
                 </ul>
             </div>
