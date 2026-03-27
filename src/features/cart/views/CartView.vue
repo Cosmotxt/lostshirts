@@ -39,7 +39,7 @@ const { items, totalPrice } = storeToRefs(cartStore)
                                 :key="`${product.id}-${product.selectedSize}-${product.selectedColor}`"
                             >
                                 <ProductResume
-                                    product-img="/assets/images/shirt-model.png"
+                                    :product-img="product.urlImage"
                                     :product-price="product.price"
                                     :product="product"
                                 />
