@@ -30,7 +30,6 @@ onMounted(() => {
             trigger: mainContent.value,
             start: "top top",
             end: "bottom top",
-            markers: true,
             scrub: 2,
         },
     })
