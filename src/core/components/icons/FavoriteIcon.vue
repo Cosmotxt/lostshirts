@@ -5,6 +5,7 @@ import type { Product } from '../../../features/products/models/product';
 
 interface FavoriteIconProps {
     product: Product
+    className?: string
 }
 
 const props = defineProps<FavoriteIconProps>()
@@ -21,7 +22,7 @@ function handleFavoriteIcon() {
 </script>
 
 <template>
-    <button @click="handleFavoriteIcon" class="ml-[.5vw] mt-[.5vw] w-5 h-5 cursor-pointer active:scale-110 duration-300 ease-in-out">
+    <button @click="handleFavoriteIcon" :class="className" class="w-5 h-5 cursor-pointer active:scale-110 duration-300 ease-in-out">
         <i class="pi pi-heart-fill" :class="isFavorite ? 'text-red-ls' : 'text-black-ls'"></i>
     </button>
 </template>

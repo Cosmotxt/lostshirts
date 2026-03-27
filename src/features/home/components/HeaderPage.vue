@@ -43,14 +43,14 @@
                     </li>
                     <li class="flex flex-col items-center gap-[.5vh]">
                         <router-link to="/carrinho" class="flex flex-col items-center gap-[.5vh]">    
-                        <i class="pi pi-shopping-cart text-button-ls"></i>
-                        <span>CARRINHO</span>
+                            <i class="pi pi-shopping-cart text-button-ls"></i>
+                            <span>CARRINHO</span>
                         </router-link>
                     </li>
                     <li class="flex flex-col items-center gap-[.5vh]">
-                        <router-link to="/carrinho" class="flex flex-col items-center gap-[.5vh]">
-                        <i class="pi pi-user text-button-ls"></i>
-                        <span>ENTRAR / CADASTRAR</span> 
+                        <router-link to="/login" class="flex flex-col items-center gap-[.5vh]">
+                            <i class="pi pi-user text-button-ls"></i>
+                            <span>ENTRAR / CADASTRAR</span> 
                         </router-link>
                     </li>
                 </ul>

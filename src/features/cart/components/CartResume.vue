@@ -36,7 +36,9 @@ const { totalPrice } = storeToRefs(useCartStore())
             </div>
             <div class="flex flex-col gap-[1vh]">
                 <ButtonBlack text="FINALIZAR COMPRA" />
-                <ButtonBlack text="CONTINUAR COMPRANDO" :secondary=true /> 
+                <router-link to="/">
+                    <ButtonBlack text="CONTINUAR COMPRANDO" :secondary=true /> 
+                </router-link>
             </div>
 
         </div>

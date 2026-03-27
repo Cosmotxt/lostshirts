@@ -1,38 +1,40 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Product } from '../models/product';
-import { useCartStore } from '../../../core/stories/CartStore';
 import CartIcon from '../../../core/components/icons/CartIcon.vue';
 import FavoriteIcon from '../../../core/components/icons/FavoriteIcon.vue';
+import ColorOptions from '../../../core/components/ColorOptions.vue';
+import SizesOptions from '../../../core/components/sizesOptions.vue';
 
 interface ProductCardProps {
     product: Product;
 }
 
 const props = defineProps<ProductCardProps>()
-const cartStore = useCartStore();
 
-const active = ref(false);
 
-function addToCart() {
-    cartStore.addItems(props.product);
-}
 </script>
 
 <template>
-    <div class="flex flex-col aspect-3/4 h-[60vh] border border-black-ls/20 p-[.5vw]">
-        <div 
-            class="aspect-square bg-center bg-cover bg-no-repeat"
-            :style="{
-                backgroundImage: `url(${props.product.urlImage})`
-            }"
-        >
-            <FavoriteIcon :product="product" />
-        </div>
-        <div class="relative h-full py-[.5vw]">
-            <div class="abolute top-0 left-0 flex flex-col items-start justify-start text-left h-full font-quantico text-black-ls ">
-                <span class="text-button-ls leading-[2vh]">{{ props.product.name }}</span>
+    <div class="flex flex-col justify-end aspect-3/4 h-[60vh] border border-black-ls/20 p-[.5vw] hover:cursor-pointer">
+        <div class="relative aspect-square overflow-hidden">
+            <router-link :to="'/produto/' + product.id">
+                <img 
+                    :src="props.product.urlImage" 
+                    alt=""
+                    class="object-cover object-center hover:scale-105 duration-300 ease-in-out"
+                >
+            </router-link>
+            <div class="absolute top-0">
+                <FavoriteIcon :product="product" class-name="ml-[.5vw] mt-[.5vw]" />
             </div>
+        </div>
+        <div class="relative h-[25%] py-[.5vw]">
+            <router-link :to="'/produto/' + product.id">
+                <div class="abolute bottom-0 flex flex-col items-start justify-start text-left h-full font-quantico text-black-ls ">
+                    <span class="text-[.9vw] leading-[2vh]">{{ props.product.name }}</span>
+                </div>
+            </router-link>
 
             <div class="absolute w-full bottom-0 flex justify-center gap-[.5vh] flex-col">
                 <div class="flex justify-between items-center w-full">
@@ -42,22 +44,8 @@ function addToCart() {
                     </span>
                     <CartIcon :product="product" />
                 </div>
-                <div class="flex gap-[.5vw]">
-                    <div class="bg-black-ls w-[1vw] h-[1vw] text-small-ls font-quantico aspect-square rounded-full flex items-center justify-center cursor-pointer"></div>
-                    <div class="bg-white w-[1vw] h-[1vw] text-small-ls font-quantico aspect-square rounded-full flex items-center justify-center cursor-pointer"></div>
-                    <div class="bg-gray-500 w-[1vw] h-[1vw] text-small-ls font-quantico aspect-square rounded-full flex items-center justify-center cursor-pointer"></div>
-                    <div class="bg-amber-400 w-[1vw] h-[1vw] text-small-ls font-quantico aspect-square rounded-full flex items-center justify-center cursor-pointer"></div>
-                </div>
-                <div class="flex gap-[.5vw]">
-                    <div 
-                        v-for="size in props.product.sizes" 
-                        @click="active = !active"
-                        :class="[
-                           ' w-[1.5vw] h-[1.5vw] text-small-ls font-quantico aspect-square rounded-full flex items-center justify-center border-[.1vh] border-black-ls/40 cursor-pointer', active ? 'bg-black-ls/10' : 'bg-transparent'
-                        ]">
-                            {{ size }}
-                    </div>
-                </div>
+                <ColorOptions :product="product" />
+                <SizesOptions :product="product" />
             </div>
 
         </div>

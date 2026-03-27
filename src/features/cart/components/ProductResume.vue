@@ -54,7 +54,6 @@ function remove() {
                 <div v-if="props.product.selectedColor" class="flex items-center gap-10">
                     <span>Cor:</span>
                     <span class="font-bold">{{ props.product.selectedColor }}</span>
-                    <!-- mostra o nome da cor em texto, sem depender de CSS color -->
                 </div>
             </div>
 

@@ -88,69 +88,59 @@ onMounted(() => {
         }, '-=0.95')
         
        
-    scrollTl.to(mainContent.value, {
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100vh',
-        duration: 1.5
-    })
-    .to(guyImage.value, {
-        y: '14',
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.out'
-    }, '-=0.90')
-    .to(splittedTitle.chars, {
-        y: '-14',
-        opacity: 0,
-        duration: 1.5,
-        stagger: 0.05,
-        ease: 'power2.out',
-    }, '-=0.90')
-    .to(splittedSubTitle.chars, {
-        y: '-14',
-        opacity: 0,
-        duration: 1.5,
-        stagger: 0.05,
-        ease: 'power2.out',
-    }, '-=0.90')
-    .to(splittedDescription.lines, {
-        y: '-8',
-        opacity: 0,
-        duration: 1.5,
-        stagger: 0.09,
-        ease: 'power2.out',
-    }, '-=0.90')
-    .to(cta.value, {
-        y: '-10',
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.out',
-    }, '-=0.90')
-    .to(subTextButton.value, {
-        y: '-8',
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.out'
-    }, '-=0.90')
-    .to(pokeballL.value, {
-        rotate: -180,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out'
-    }, '-=0.90')
-    .to(pokeballR.value, {
-        rotate: 180,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out'
-    }, '-=0.90')
-})
+    scrollTl
+        .to(mainContent.value, {
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: '100vh',
+            duration: 2,
+            ease: 'power4.inOut'
+        })
+        .to(subTextButton.value, {
+            y: '-8',
+            opacity: 0,
+            duration: 1
+        }, '-=1')
+        .to(cta.value, {
+            y: '-10',
+            opacity: 0,
+            duration: 1
+        }, '-=0.9')
+        .to(splittedDescription.lines, {
+            y: '-8',
+            opacity: 0,
+            duration: 1,
+            stagger: 0.05
+        }, '-=0.9')    
+        .to(guyImage.value, {
+            y: '14',
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.inOut'
+        }, '-=1')
+        .to(splittedSubTitle.chars, {
+            y: '-14',
+            opacity: 0,
+            duration: 1,
+            stagger: 0.02
+        }, '-=0.95')
+        .to(splittedTitle.chars, {
+            y: '-14',
+            opacity: 0,
+            duration: 1,
+            stagger: 0.02
+        }, '-=0.95')
+
+        // 3. Somem as pokébolas e o modelo
+        .to(pokeballL.value, { rotate: -180, opacity: 0, duration: 1 }, '-=0.5')
+        .to(pokeballR.value, { rotate: 180, opacity: 0, duration: 1 }, '-=1')
+});
 </script>
 
 <template>
-    <section id="hero-section" class="relative -z-10 bg-black-ls min-h-[180vh] overflow-x-hidden">
+    <section id="hero-section" class="relative -z-10 bg-black-ls min-h-[150vh] overflow-x-hidden">
         <div ref="mainContent" class="overflow-hidden fixed inset-[2vh] h-[96vh]">
             <div id="background-image" class="absolute blur-[3px] inset-0 w-full h-full bg-[url('/assets/images/hero/pokemon/background-hero.webp')] bg-center bg-cover">            </div>
             <div class="h-full">

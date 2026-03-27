@@ -25,7 +25,7 @@ function handleCartIcon() {
 </script>
 
 <template>
-    <button @click="handleCartIcon" class="text-subtitle-ls cursor-pointer active:bg-black-ls/30 w-[3vw] h-[3vw] rounded-full duration-500">
+    <button @click="handleCartIcon" class="flex items-center justify-center text-subtitle-ls cursor-pointer hover:bg-black-ls/5 active:bg-black-ls/30 w-[3vw] h-[3vw] rounded-full duration-500">
         <i class="pi" :class="isInCart ? 'pi-cart-minus' : 'pi-cart-plus'"></i>
     </button>
 </template>
