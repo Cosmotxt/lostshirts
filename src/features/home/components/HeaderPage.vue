@@ -12,35 +12,43 @@ const { totalItems } = storeToRefs(cartStore)
             <div class="flex justify-between items-center mx-auto w-[80%]">
                 <nav>
                     <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
-                        <li><router-link to="">CATEGORIAS</router-link></li>
-                        <li><router-link to="">PROMOÇÕES</router-link></li>
-                        <li><router-link to="">COMPRE PELO WHATSAPP</router-link></li>
+                        <li>
+                            <router-link to="">CATEGORIAS</router-link>
+                            <span class="pi pi-arrow-down"></span>
+                        </li>
+                        <li>
+                            <router-link to="">PROMOÇÕES</router-link>
+                            <span class="pi pi-arrow-down"></span>
+                        </li>
+                        <li>
+                            <router-link to="">COMPRE PELO WHATSAPP</router-link>
+                            <span class="pi pi-arrow-down"></span>
+                        </li>
                     </ul>
                 </nav>
 
                 <router-link to="/">
                     <img src="/assets/images/logo.png" alt="logotipo do site" class="w-[8vw]">
                 </router-link>
-
-                <ul class="flex items-center gap-14 text-white-ls text-small-ls font-family-ls">
-                    <li><router-link to="">BUSCAR PRODUTO</router-link></li>
-                    <li><router-link to="/favoritos">FAVORITOS</router-link></li>
-                    <li><router-link to="/carrinho">CARRINHO</router-link></li>
-
-                    <!-- CARRINHO COM BADGE -->
-                    <li>
-                        <router-link to="/carrinho" class="relative inline-flex items-center">
-                            CARRINHO
-                            <span
-                                v-if="totalItems > 0"
-                                class="absolute -top-3 -right-4 bg-white-ls text-black-ls text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center"
-                            >
-                                {{ totalItems > 99 ? '99+' : totalItems }}
-                            </span>
-                        </router-link>
+                    
+    
+                <ul class="flex items-end gap-14 text-white-ls text-small-ls font-family-ls">
+                    <li class="flex flex-col items-center gap-[.5vh]">
+                        <i class="pi pi-search text-button-ls"></i>
+                        <router-link to="">BUSCAR PRODUTO</router-link>
                     </li>
-
-                    <li><router-link to="/login">ENTRAR / CADASTRAR</router-link></li>
+                    <li class="flex flex-col items-center gap-[.5vh]">
+                        <i class="pi pi-heart text-button-ls"></i>
+                        <router-link to="/favoritos">FAVORITOS</router-link>
+                    </li>
+                    <li class="flex flex-col items-center gap-[.5vh]">
+                        <i class="pi pi-shopping-cart text-button-ls"></i>
+                        <router-link to="/carrinho">CARRINHO</router-link>
+                    </li>
+                    <li class="flex flex-col items-center gap-[.5vh]">
+                        <i class="pi pi-user text-button-ls"></i>
+                        <router-link to="/login">ENTRAR / CADASTRAR</router-link>
+                    </li>
                 </ul>
             </div>
         </div>

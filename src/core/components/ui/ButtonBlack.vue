@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 interface ButtonBlackProps {
     text: string,
     addClass?: string,
@@ -6,11 +8,17 @@ interface ButtonBlackProps {
 }
 
 const buttonBlackProps = defineProps<ButtonBlackProps>()
+const root = ref(null)
+
+defineExpose({
+    root
+})
 
 </script>
 
 <template>
     <button 
+        ref="root"
         :class="[
             addClass, 
             'bg-transparente border border-black-ls text-black-ls font-medium uppercase py-[2vh] px-[4vw] cursor-pointer'
@@ -21,6 +29,7 @@ const buttonBlackProps = defineProps<ButtonBlackProps>()
     </button>
 
     <button 
+        ref="root"
         :class="[
             addClass,
             'bg-black-ls text-white-ls font-medium uppercase py-[2vh] px-[4vw] cursor-pointer hover:bg-red-ls hover:scale-101 duration-500'
