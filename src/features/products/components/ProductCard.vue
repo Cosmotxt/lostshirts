@@ -18,7 +18,7 @@ const props = defineProps<ProductCardProps>()
 <template>
     <div class="flex flex-col justify-end aspect-3/4 h-[60vh] border border-black-ls/20 p-[.5vw] hover:cursor-pointer">
         <div class="relative aspect-square overflow-hidden">
-            <router-link :to="'/produto/' + product.id">
+            <router-link :to="'/produto/' + props.product.id">
                 <img 
                     :src="props.product.urlImage" 
                     alt=""
@@ -30,7 +30,7 @@ const props = defineProps<ProductCardProps>()
             </div>
         </div>
         <div class="relative h-[25%] py-[.5vw]">
-            <router-link :to="'/produto/' + product.id">
+            <router-link :to="'/produto/' + props.product.id">
                 <div class="abolute bottom-0 flex flex-col items-start justify-start text-left h-full font-quantico text-black-ls ">
                     <span class="text-[.9vw] leading-[2vh]">{{ props.product.name }}</span>
                 </div>
